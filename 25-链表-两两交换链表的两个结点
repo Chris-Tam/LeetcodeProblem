@@ -1,0 +1,62 @@
+# LeetcodeProblem
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+public class Solution {
+
+
+          public ListNode swapPairs(ListNode head) {
+                    if(head == null) return null;
+                    if(head .next == null) return head;
+                    ListNode listNode1 = head;
+                    ListNode listNode2 = head.next;
+                    ListNode temp = new ListNode (  );
+                    ListNode temp1 = new ListNode (  );
+                    ListNode ln = new ListNode (  );
+                    ListNode head1 = ln;
+                    while(true){
+                              ln.next = listNode2;
+                              temp = listNode1;
+                              listNode1 = listNode1.next.next;
+                              ln = ln.next;
+                              ln.next = temp;
+                              ln = ln.next;
+                              if( listNode1 == null  ) {
+                                        ln.next = null;
+                                        break;
+
+                              }
+                              if(listNode1.next == null){
+                                        ln.next = listNode1;
+                                        break;
+                              }
+                              temp = listNode1;
+                              listNode2 = listNode1.next;
+
+                    }
+
+
+                    return head1.next;
+          }
+
+//          public static void main ( String[] args ) {
+//                    ListNode head = new ListNode ( 1 );
+//                    head.next = new ListNode ( 2 );
+//                    head.next.next = new ListNode ( 3 );
+//                    head.next.next.next = new ListNode ( 4 );
+//
+//                    Solution solution = new Solution ( );
+//                    solution.swapPairs ( head );
+//          }
+
+
+
+
+}
