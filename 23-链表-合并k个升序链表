@@ -1,0 +1,69 @@
+# LeetcodeProblem
+**给你一个链表数组，每个链表都已经按升序排列。
+ 请你将所有链表合并到一个升序链表中，返回合并后的链表。
+ * @author TT
+ * @create 2022/3/18 13:14
+ */
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+public class Solution {
+          public ListNode mergeKLists(ListNode[] lists) {
+                    int a = lists.length;
+                    ListNode head = null;
+                    for ( int i = 0 ; i < a ; i++ ) {
+                              if(lists[i] == null) continue;
+                              head = mergeTwoLists ( head , lists[ i ] );
+                    }
+
+                    return head;
+          }
+
+          public ListNode mergeTwoLists(ListNode list1, ListNode list2) { //合并两个
+                    ListNode ln = new ListNode ( );
+                    ListNode head = ln;
+                    if(list1 == null) return list2;
+                    else if(list2 == null) return list1;
+                    while ( list1 != null || list2 != null ) {
+                              if ( list1 == null ) {
+                                        ln.next = list2;
+                                        ln = ln.next;
+                                        list2 = list2.next;
+                                        continue;
+                              }
+
+                              if ( list2 == null ) {
+                                        ln.next = list1;
+                                        ln = ln.next;
+                                        list1 = list1.next;
+                                        continue;
+                              }
+
+
+                              if ( list1.val <= list2.val ) {
+                                        ln.next = list1;
+                                        ln = ln.next;
+                                        list1 = list1.next;
+
+                              } else {
+                                        ln.next = list2;
+                                        ln = ln.next;
+                                        list2 = list2.next;
+
+                              }
+                    }
+
+                    return head.next;
+
+
+          }
+
+
+}
