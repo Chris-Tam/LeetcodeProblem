@@ -1,0 +1,53 @@
+# LeetcodeProblem
+/**合并两个有序的链表
+ * @author TT
+ * @create 2022/3/15 9:45 下午
+ */
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+public class Solution {
+          public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+                    ListNode ln = new ListNode ( );
+                    ListNode head = ln;
+
+                    while(list1 != null  ||  list2 != null){
+                              if(list1 == null){
+                                        ln.next = list2;
+                                        ln = ln.next;
+                                        list2 = list2.next;
+                                        continue;
+                              }
+
+                              if(list2 == null){
+                                        ln.next = list1;
+                                        ln = ln.next;
+                                        list1 = list1.next;
+                                        continue;
+                              }
+
+
+                              if( list1.val <= list2.val){
+                                        ln.next = list1;
+                                        ln = ln.next;
+                                        list1 = list1.next;
+
+                              }else{
+                                        ln.next = list2;
+                                        ln = ln.next;
+                                        list2 = list2.next;
+
+                              }
+                    }
+
+                    return head.next;
+
+          }
+
+         
+}
