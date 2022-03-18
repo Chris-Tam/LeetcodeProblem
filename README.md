@@ -6,8 +6,7 @@
  * @author TT
  * @create 2022/3/16 3:30 下午
  */
- 
- public class Solution1 {
+ public class Solution {
           public ListNode addTwoNumbers ( ListNode l1 , ListNode l2 ) {
                     int a = 0;
                     ListNode head = new ListNode ( );
@@ -36,22 +35,5 @@
 
                     return head;
           }
-
-
-//          public static void main ( String[] args ) {
-//                    ListNode l1 = new ListNode ( 9 );
-//                    ListNode l2 = new ListNode ( 1 );
-//                    l2.next = new ListNode ( 9 );
-//                    l2.next.next = new ListNode ( 9 );
-//                    l2.next.next.next = new ListNode ( 9 );
-//                    l2.next.next.next.next = new ListNode ( 9 );
-//                    l2.next.next.next.next.next = new ListNode ( 9 );
-//                    l2.next.next.next.next.next.next = new ListNode ( 9 );
-//                    l2.next.next.next.next.next.next.next = new ListNode ( 9 );
-//
-//
-//                    Solution1 solution1 = new Solution1 ( );
-//                    solution1.addTwoNumbers ( l1,l2 );
-
 
 }
