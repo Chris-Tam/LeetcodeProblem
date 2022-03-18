@@ -1,0 +1,52 @@
+# LeetcodeProblem
+**给你一个链表的头节点 head ，旋转链表，
+ * 将链表每个节点向右移动 k 个位置。
+ * @author TT
+ * @create 2022/3/16 5:14 下午
+ */
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+public class Solution {
+          public ListNode rotateRight(ListNode head, int k) {
+                    int cont = 1;
+                    if(head == null) return null;
+                    ListNode flag = head;
+                    while(flag.next != null){
+                              cont++;
+                              flag = flag.next;
+                    }
+                    if(k== cont || k%cont == 0) return head;
+                    
+                    flag.next = head; //将最后一个结点和第一个节点连起来
+                    ListNode ln = new ListNode();
+                    ListNode head1 =  ln;
+                    for(int i = 0;i< cont - (k % cont); i++){
+                            head = head.next;
+                        }
+                        for(int i = 0; i< cont ; i++){
+                            ln.next = head;
+                            head = head.next;
+                            ln = ln.next;
+                        }
+                        ln.next = null;
+                        return head1.next;
+
+
+                    
+
+
+
+          }
+ 
+
+
+
+}
