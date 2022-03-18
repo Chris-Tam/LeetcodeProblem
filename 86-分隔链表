@@ -1,0 +1,51 @@
+# LeetcodeProblem
+**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+public class Solution {
+          public ListNode partition(ListNode head, int x) {
+                    if(head == null) return null;
+                    ListNode temp = new ListNode (  );
+                    ListNode temp1 ;
+                    temp.next = head;
+                    while(temp.next.val < x){
+                              temp = temp.next;
+                              if(temp.next == null) return head;
+                    }
+                    temp1 = temp.next;
+                    boolean flag = false;
+                    if(temp.next == head) flag =true;
+
+                    while(true){
+                              if(temp1.next == null) break;
+                              if(temp1.next.val < x){
+                                        ListNode temp2 = temp.next;
+                                        temp.next = temp1.next;
+                                        temp1.next = temp1.next.next;
+                                        temp.next.next = temp2;
+                                        temp = temp.next;
+                                        if(flag) {
+                                                  head = temp;
+                                                  flag = false;
+                                        }
+                                        continue;
+
+                              }
+                              temp1 = temp1.next;
+
+
+
+                    }
+
+                    return head;
+          }
+
+        
+}
